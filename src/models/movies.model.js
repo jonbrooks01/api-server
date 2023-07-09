@@ -9,7 +9,7 @@ const Movies = (dbInstance, DataTypes) =>
         allowNull: false,
       },
       rating: {
-        type: NUMBER,
+        type: DataTypes.NUMBER,
       },
     });
 
