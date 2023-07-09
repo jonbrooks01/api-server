@@ -6,7 +6,9 @@ const games = require('./games.model.js');
 
 const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite:memory' : process.env.DATABASE_URI;
 
-let sequelize = new Sequelize(POSTGRES_URI);
+let sequelize = new Sequelize(POSTGRES_URI, {
+  dialect: 'postgres',
+});
 
 module.exports = {
   dbConnection: sequelize,
