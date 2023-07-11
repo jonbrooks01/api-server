@@ -24,3 +24,6 @@ Endpoint: Returns Object
 Tests
 Unit Tests: npm run test
 <!-- Lint Tests: npm run lint -->
+UML:
+
+![UML](./UML.jpg)
