@@ -6,7 +6,7 @@ const Games = (dbInstance, DataTypes) =>
       title: {
         type: DataTypes.STRING,
 
-        // allowNull: false,
+        allowNull: false,
       },
       rating: {
         type: DataTypes.INTEGER,
