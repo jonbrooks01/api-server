@@ -15,6 +15,7 @@ Setup
 Running the app: npm start
 
 Endpoint: Returns Object
+Added Github actions:
 
 <!-- {
   "domain": "deployment-practice-main.onrender.com/",
