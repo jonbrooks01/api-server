@@ -15,3 +15,5 @@ module.exports = {
   Movies: movies(sequelize, DataTypes),
   Games: games(sequelize, DataTypes)
 };
+
+// you might have to have a different data model since we have to create an association between two of our models (one to one/one to many/etc.)
