@@ -1,5 +1,7 @@
 'use strict';
 
+const { STRING } = require("sequelize");
+
 
 const Games = (dbInstance, DataTypes) =>
     dbInstance.define('Games', {
@@ -7,6 +9,9 @@ const Games = (dbInstance, DataTypes) =>
         type: DataTypes.STRING,
 
         allowNull: false,
+      },
+      mainCharacter: {
+        type: DataTypes.STRING,
       },
       rating: {
         type: DataTypes.INTEGER,

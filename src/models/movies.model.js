@@ -7,6 +7,9 @@ const Movies = (dbInstance, DataTypes) =>
         type: DataTypes.STRING,
 
         allowNull: false,
+      },    
+      mainCharacter: {
+        type: DataTypes.STRING,
       },
       rating: {
         type: DataTypes.INTEGER,
