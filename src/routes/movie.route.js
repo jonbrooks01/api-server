@@ -28,7 +28,7 @@ async function createMovies(req, res) {
   let savedMovies = await Movies.create(newMovies);
   res.status(200).json(savedMovies);
 }
-
+// since this is only changing one record at a time, it might make more sense to use singular instead of plural function/variable names
 async function updateMovies(req, res) {
   const id = parseInt(req.params.id);
   const updateMoviesObj = req.body;
@@ -36,11 +36,11 @@ async function updateMovies(req, res) {
   let updatedMovies = await retrievedMovies.update(updateMoviesObj);
   res.status(200).json(updatedMovies);
 }
-
+// since this is only changing one record at a time, it might make more sense to use singular instead of plural function/variable names
 async function deleteMovies(req,res) {
   const id = parseInt(req.params.id);
   let deleteMovies = await Movies.destroy({where: { id: id } });
   res.status(204).json(deleteMovies);
 }
-
+// since this is only changing one record at a time, it might make more sense to use singular instead of plural function/variable names
 module.exports = router;
