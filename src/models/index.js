@@ -5,21 +5,19 @@ const movies = require('./movies.model');
 const games = require('./games.model.js');
 const Collection = require('./collection.js');
 
-const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite:memory' : process.env.DATABASE_URI;
+const POSTGRES_URI = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' : process.env.DATABASE_URI;
 
-let sequelize = new Sequelize(POSTGRES_URI, {
-  dialect: 'postgres',
-});
+let sequelize = new Sequelize(POSTGRES_URI);
 
 const movieModel = movies(sequelize, DataTypes);
 const gameModel = games(sequelize, DataTypes);
 
 movieModel.hasMany(gameModel, {
-  foreignKey: 'customerId',
+  foreignKey: 'movieId',
   sourceKey: 'id',
 });
 gameModel.belongsTo(movieModel, {
-  foreignKey: 'customerId',
+  foreignKey: 'movieId',
   targetKey: 'id',
 });
 

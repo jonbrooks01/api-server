@@ -5,7 +5,6 @@ const Movies = (dbInstance, DataTypes) =>
     dbInstance.define('Movies', {
       title: {
         type: DataTypes.STRING,
-
         allowNull: false,
       },    
       mainCharacter: {
@@ -13,6 +12,7 @@ const Movies = (dbInstance, DataTypes) =>
       },
       rating: {
         type: DataTypes.INTEGER,
+        allowNull: true,
       },
     });
 

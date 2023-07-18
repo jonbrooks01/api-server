@@ -7,14 +7,21 @@ const Games = (dbInstance, DataTypes) =>
     dbInstance.define('Games', {
       title: {
         type: DataTypes.STRING,
-
         allowNull: false,
       },
       mainCharacter: {
         type: DataTypes.STRING,
+  
       },
       rating: {
         type: DataTypes.INTEGER,
+      },
+      movieId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Movies',
+          key: 'id',
+        },
       },
     });
 
