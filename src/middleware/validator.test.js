@@ -1,26 +1,26 @@
-// 'use strict';
+'use strict';
 
-// const { afterEach } = require('node:test');
-// const {validateHello} = require('./validator.js');
+const { afterEach } = require('node:test');
+const {validateHello} = require('./validator.js');
 
-// describe('test the validator middleware', () => {
-//   let consoleSpy;
-//   let req = {path: '/test'};
-//   let res = {};
-//   let next = jest.fn();
+describe('test the validator middleware', () => {
+  let consoleSpy;
+  let req = {path: '/test'};
+  let res = {};
+  let next = jest.fn();
 
 
-//   beforeEach(() => {
-//     consoleSpy =jest.spyOn(console, 'error').mockImplementation();
-//   });
+  beforeEach(() => {
+    consoleSpy =jest.spyOn(console, 'error').mockImplementation();
+  });
 
-//   afterEach(() => {
-//     consoleSpy.mockRestore();
-//   });
+  afterEach(() => {
+    consoleSpy.mockRestore();
+  });
   
-//   test('it should call next if a name is given', () => {
-//     validateHello({query:{name:'John'}},res,next);
-//     expect(next).toHaveBeenCalledWith();
-//   });
+  test('it should call next if a name is given', () => {
+    validateHello({query:{name:'John'}},res,next);
+    expect(next).toHaveBeenCalledWith();
+  });
 
-// });
+});
