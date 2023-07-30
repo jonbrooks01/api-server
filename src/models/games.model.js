@@ -9,7 +9,11 @@ const Games = (dbInstance, DataTypes) =>
         type: DataTypes.STRING,
         allowNull: false,
       },
-      mainCharacter: {
+      mainCharacterMovie: {
+        type: DataTypes.STRING,
+  
+      },    
+       mainCharacter: {
         type: DataTypes.STRING,
   
       },

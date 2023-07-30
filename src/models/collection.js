@@ -5,13 +5,23 @@ class Collection {
     this.model = model;
   }
 
+  // async create(jsonObj) {
+  //   try {
+  //     let record = await this.model.create(jsonObj);
+  //     return record;
+  //   } catch(e) {
+  //     console.error(`error when creating data for this model: ${this.model.name}`);
+  //     return e;
+  //   }
+  // }
   async create(jsonObj) {
     try {
       let record = await this.model.create(jsonObj);
       return record;
-    } catch(e) {
-      console.error(`error when creating data for this model: ${this.model.name}`);
-      return e;
+    } catch (error) {
+      console.error(`Error when creating data for the model ${this.model.name}: ${error.message}`);
+      console.error(error.stack);
+      throw error; // rethrow the error to fail the test
     }
   }
 
