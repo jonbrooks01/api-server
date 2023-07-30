@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const { Games } = require('../models/index.js');
+const { gameCollection } = require('../models/index.js');
 
 const router = express.Router();
 
@@ -11,21 +11,20 @@ router.post('/games', createGames);
 router.put('/games/:id', updateGames);
 router.delete('/games/:id', deleteGames);
 
-async function getGames(req,res) {
-  let allGames = await Games.findAll();
-
+async function getGames(req, res) {
+  let allGames = await gameCollection.read();
   res.status(200).json(allGames);
 }
 
-async function getOneGames(req,res) {
+async function getOneGames(req, res) {
   const id = parseInt(req.params.id);
-  let retrievedGames = await Games.findOne({ where: { id: id} });
+  let retrievedGames = await gameCollection.read(id);
   res.status(200).json(retrievedGames);
 }
 
 async function createGames(req, res) {
-  let newGames =req.body;
-  let savedGames = await Games.create(newGames);
+  let newGames = req.body;
+  let savedGames = await gameCollection.create(newGames);
   res.status(200).json(savedGames);
 }
 // since this is only creating one record at a time, it might make more sense to use singular instead of plural function/variable names
@@ -33,15 +32,14 @@ async function createGames(req, res) {
 async function updateGames(req, res) {
   const id = parseInt(req.params.id);
   const updateGamesObj = req.body;
-  let retrievedGames = await Games.findOne({where: { id: id }});
-  let updatedGames = await retrievedGames.update(updateGamesObj);
+  let updatedGames = await gameCollection.update(id, updateGamesObj);
   res.status(200).json(updatedGames);
 }
 // since this is only updating one record at a time, it might make more sense to use singular instead of plural function/variable names
 
-async function deleteGames(req,res) {
+async function deleteGames(req, res) {
   const id = parseInt(req.params.id);
-  let deleteGames = await Games.destroy({where: { id: id } });
+  let deleteGames = await gameCollection.delete(id);
   res.status(204).json(deleteGames);
 }
 

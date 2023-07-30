@@ -1,16 +1,15 @@
 require('dotenv').config();
-const { start } = require('./server.js');
-const { dbConnection } = require('./src/models/index.js');
-const PORT = process.env.PORT || 3000;
-
+const { start } = require('./src/server');
+const { dbConnection } = require('./src/models');
+const PORT = process.env.PORT;
 
 dbConnection
-.sync()
-.then(() => {
-  start(PORT);
-})
-.catch(console.error);
-
-
+  .sync()
+  .then(() => {
+    start(PORT, () => console.log('server up'));
+  })
+  .catch((e) => {
+    console.error('Could not start server', e.message);
+  });
 
 // good stuff Jonathan!  Code is very easy to step through and understand.
